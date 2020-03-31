@@ -72,6 +72,9 @@
   document.onkeyup = function(event) {
     const key = event.keyCode;
     const element = document.querySelector(`div[data-key='${key}']`);
+    if (!element) {
+      return;
+    }
     element.classList.remove('playing');
   }
 
