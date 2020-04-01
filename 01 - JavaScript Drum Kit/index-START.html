@@ -58,18 +58,18 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script type='text/javascript'>
-  document.onkeydown = function(event) {
+  playSound = function(event) {
     const key = event.keyCode;
     const audio = document.querySelector(`audio[data-key='${key}']`);
+    const element = document.querySelector(`div[data-key='${key}']`);
     if (!audio) {
       return;
     }
     audio.currentTime = 0;
     audio.play();
-    const element = document.querySelector(`div[data-key='${key}']`);
     element.classList.add('playing');
   }
-  document.onkeyup = function(event) {
+  removeClass = function(event) {
     const key = event.keyCode;
     const element = document.querySelector(`div[data-key='${key}']`);
     if (!element) {
@@ -77,7 +77,8 @@
     }
     element.classList.remove('playing');
   }
-
+  window.addEventListener('keydown', playSound);
+  window.addEventListener('keyup', removeClass);
 </script>
 
 
